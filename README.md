@@ -1,4 +1,4 @@
-# Internship Recommendation Project with Internshala Data
+# Internship Recommendation Project with LetsIntern Data
  
 ## About :
 
