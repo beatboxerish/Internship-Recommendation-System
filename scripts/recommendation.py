@@ -17,17 +17,6 @@ def make_recs(sim, df, i, n):
     recs_df - dataframe consisting of the recommended internships
     
     '''
-    # remove
-    #if 'Unnamed: 0' in df.columns:
-    #   del df['Unnamed: 0']
-    #if 'id' in sim.columns:
-    #    sim.set_index('id', inplace = True)
-    
-    #try:
-    #   ith_series = sim[i] # i is string and when function is run on loaded data, i has to be a string for it to work
-    #except:
-    #   ith_series = sim[int(i)] # when function isnt run on loaded data, it takes in i as integer
-
     ith_series = sim[i]
     ith_series = ith_series.sort_values(ascending = False)
     recs = ith_series.head(int(n)+1).index.tolist()
