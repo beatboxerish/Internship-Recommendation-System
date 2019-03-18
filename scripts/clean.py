@@ -71,8 +71,6 @@ def clean_prep_data(data):
 
     # drop those rows that have at least 10 non NA values
     df.dropna(thresh=10, inplace= True)
-
-    # remove df.sort_values('id', inplace=True)
     
     return df
 

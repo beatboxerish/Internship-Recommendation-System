@@ -17,24 +17,25 @@ def make_recs(sim, df, i, n):
     recs_df - dataframe consisting of the recommended internships
     
     '''
-    if 'Unnamed: 0' in df.columns:
-        del df['Unnamed: 0']
-    if 'id' in sim.columns:
-        sim.set_index('id', inplace = True)
-    try:
-        ith_series = sim[i] # i is string and when function is run on loaded data, i has to be a string for it to work
-    except:
-        ith_series = sim[int(i)] # when function isnt run on loaded data, it takes in i as integer
+    # remove
+    #if 'Unnamed: 0' in df.columns:
+    #   del df['Unnamed: 0']
+    #if 'id' in sim.columns:
+    #    sim.set_index('id', inplace = True)
+    
+    #try:
+    #   ith_series = sim[i] # i is string and when function is run on loaded data, i has to be a string for it to work
+    #except:
+    #   ith_series = sim[int(i)] # when function isnt run on loaded data, it takes in i as integer
+
+    ith_series = sim[i]
     ith_series = ith_series.sort_values(ascending = False)
     recs = ith_series.head(int(n)+1).index.tolist()
     
     # what might happen is that multiple elements attain maximum similarity value. Then it is possible that 
     # we don't get i in our recs. so for that the below is done. 
     if i in recs: 
-        try:
-            recs.remove(i)
-        except:
-            recs.remove(int(i)) # these have been made for the same reasons as above
+        recs.remove(i)
     else:
         recs = recs[:-1]
         
